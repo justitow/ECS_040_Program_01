@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
     
 
     //TODO: create method to input filename by command line argument
-    fp = fopen("/Users/justin/Developer/ProgramOne/Homework01/test.txt", "r");
+    fp = fopen("/Users/justin/Developer/ECS_040_Project_01/ECS_040_Program_01/test.txt", "r");
     
     //loop reads in all of the contetns of the string include earlier. Each line is loaded sperately into the reader struct as a differnt line
     //TODO: create methods ot remove the /n and turn tabs into spaces, as per instruction
