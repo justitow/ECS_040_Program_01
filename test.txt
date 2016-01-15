@@ -1,19 +1,5 @@
-test
 one
-.iamdirective
 two
-<<<<<<< HEAD
 three
-hello
-124234
-787878778787
-I am trying to see
-=======
-	thr  ee
-	four
-main:
-:sdfd  sfsf
-    hello
-main:
-this is		word
->>>>>>> master
+four
+five

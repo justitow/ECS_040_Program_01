@@ -67,11 +67,13 @@ int main(int argc, char* argv[])
     init_values(&registers, memory);
     
     
-    
     // This code allows a file to be read and for the data to be passed reader.info's character array
     FILE* fp;
+    
     char* buffer;
     char* tab_location;
+    
+    
     
     
 
@@ -82,7 +84,7 @@ int main(int argc, char* argv[])
     //TODO: create methods ot remove the /n and turn tabs into spaces, as per instruction
     int instruction_counter = 0;
     
-    while (fgets(buffer, 255, fp) != NULL) {
+    while (!(fgets(buffer, 255, fp) == NULL)) {
         if ((strstr(buffer, ".") == NULL) && (strstr(buffer, ":") == NULL)) {
             while((tab_location = strstr(buffer, "\t")) != NULL){
                 char* temp;
@@ -91,6 +93,8 @@ int main(int argc, char* argv[])
             }
             reader.lines[instruction_counter].info[0] = malloc(sizeof(char*));
             strcpy(*reader.lines[instruction_counter].info, buffer);
+            //reader.lines[instruction_counter].address = temp_instuction_pointer;
+            //temp_instuction_pointer += 4;
             instruction_counter++;
         }
     }
