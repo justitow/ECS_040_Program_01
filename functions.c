@@ -1,52 +1,58 @@
-int addl(int op1, int op2){
+void addl(int* op1, int* op2){
 
-	int result;
-	result = op1 + op2;
-
-	return result;
+	*op2 = *op1 + *op2;
 
 
 
 
 }
 
-int andl(int op1, int op2){
+void andl(int *op1, int *op2){
 
-	int and;
-	and = op1 & op2;
-
-
-}
-
-int leave(){
-
+	
+	*op2 = *op1 & *op2;
 
 
 }
 
+void leave(Register *register, int *memory){
 
-int movl(int op1, int op2){
-
-
-
+	register->regs[esp] = register->regs[ebp];
+	register->regs[esp] = memory[register->regs[ebp]]+4;
 
 }
 
 
+void movl(int *op1, int *op2){
 
-int pushl(int op1){
-
-
+	*op2 = *op1
 
 
 }
 
 
-int ret(){
 
+void pushl(int *op1, int *memory, Register *register){
+
+	register->regs[esp] -= 4;
+	memory[register->regs[esp]] = *op1; 
 
 
 }
 
 
-int subl()
+void ret(Register *register, int *memory){
+
+	memory[register->regs[eip]] = memory[register->regs[esp]];
+	register->regs[esp] += 4;
+
+}
+
+
+void subl(int *op1, int *op2){
+
+
+	*op2 = *op1 - *op2;
+
+
+}
