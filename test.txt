@@ -1,4 +1,11 @@
 test
 one
+.iamdirective
 two
-three
+	thr  ee
+	four
+main:
+:sdfd  sfsf
+    hello
+main:
+this is		word
