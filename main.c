@@ -71,6 +71,7 @@ int main(int argc, char* argv[])
     // This code allows a file to be read and for the data to be passed reader.info's character array
     FILE* fp;
     char* buffer;
+    char* tab_location;
     
     
 
@@ -82,9 +83,16 @@ int main(int argc, char* argv[])
     int instruction_counter = 0;
     
     while (fgets(buffer, 255, fp) != NULL) {
-        reader.lines[instruction_counter].info[0] = malloc(sizeof(char*));
-        strcpy(*reader.lines[instruction_counter].info, buffer);
-        instruction_counter++;
+        if ((strstr(buffer, ".") == NULL) && (strstr(buffer, ":") == NULL)) {
+            while((tab_location = strstr(buffer, "\t")) != NULL){
+                char* temp;
+                temp = tab_location;
+                *temp = ' ';
+            }
+            reader.lines[instruction_counter].info[0] = malloc(sizeof(char*));
+            strcpy(*reader.lines[instruction_counter].info, buffer);
+            instruction_counter++;
+        }
     }
     
     
@@ -96,7 +104,7 @@ int main(int argc, char* argv[])
         printf("%s", reader.lines[i].info[0]);
     }
     printf("\n");
-    
+
     
     
     return 0;
