@@ -12,20 +12,13 @@
 #include <stdlib.h>
 
 void addl(int* op1, int* op2){
-    
     *op2 = *op1 + *op2;
-    
-    
-    
-    
 }
 
 void andl(int *op1, int *op2){
     
     
     *op2 = *op1 & *op2;
-    
-    
 }
 
 void leave(Registers *registers, int *memory){
