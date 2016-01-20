@@ -76,10 +76,8 @@ int main(int argc, char* argv[])
     
 
     //TODO: create method to input filename by command line argument
-    char* buffer = malloc(sizeof(char*[255]));
-    int file_length;
-    int ic = 100;
-
+    char* buffer;
+    
     //loop reads in all of the contetns of the string include earlier. Each line is loaded sperately into the reader struct as a differnt line
     //TODO: create methods ot remove the /n and turn tabs into spaces, as per instruction
     int instruction_counter = 0;
@@ -87,8 +85,11 @@ int main(int argc, char* argv[])
     
     FILE* fp;
 
-    fp = fopen("/Users/justin/Developer/ECS_040_Project_01/ECS_040_Programa_01/test.txt", "r");
-    
+    fp = fopen("/Users/justin/Developer/ECS_040_Project_01/ECS_040_Program_01/test.txt", "r");
+    if (fp == NULL) {
+        printf(" File fucked up");
+        return 0;
+    }
     
     while (!(fgets(buffer, 255, fp) == NULL)) {
         if ((strstr(buffer, ".") == NULL) && (strstr(buffer, ":") == NULL)) {
@@ -97,13 +98,19 @@ int main(int argc, char* argv[])
                 temp = tab_location;
                 *temp = ' ';
             }
-            //reader.lines[instruction_counter].address = 0;
-            *reader.lines[instruction_counter].info = malloc((strlen(buffer) + 1)*sizeof(char*));
+            
+            *reader.lines[instruction_counter].info = (char *)malloc((strlen(buffer) + 1)*sizeof(char*));
+            
             strcpy(*reader.lines[instruction_counter].info, buffer);
-            //reader.lines[instruction_counter].address = ic;
+            
+            reader.lines[instruction_counter].address = 0;
             //ic += 4;
             //reader.lines[instruction_counter].address = 100 + 4*instruction_counter;
-            printf("%s", *reader.lines[instruction_counter].info);
+            //printf("%s", *reader.lines[instruction_counter].info);
+            
+            for(int i = 0; i < instruction_counter; i++) {
+                puts(*reader.lines[i].info);
+            }
 
             instruction_counter++;
         }
@@ -112,14 +119,12 @@ int main(int argc, char* argv[])
     fclose(fp);
 
     
-    
     //test loop to print the contents of reader.lines
     for(int i = 0; i < instruction_counter; i++) {
         printf("%s", *reader.lines[i].info);
     }
     printf("\n");
 
-    
     
     return 0;
 }  // main()
