@@ -63,24 +63,47 @@ char* fetch_instruction(Registers* registers, Reader* reader) {
 }
 
 void parse_instruction(Registers* registers, Decoder* decoder, char* instruction, int *memory) {
-    char* strtk;
-    strtok(instruction, " ,");
-    //strcpy(decoder->opcode, *strtk);
+    char *token;
+    token = malloc(sizeof(char*)*21);
+    token = strtok(instruction, " ,");
+    strcpy(decoder->opcode, token);
 
-    while(strtk != NULL){
-        printf("%s\n", strtk);
-        /*
-        if(decoder->operand1 == NULL)
+    while(token != NULL){
+        //printf("%s\n", *token);
+        token = strtok(NULL, " ,");
+        
+        
+        if(decoder->operand1 == NULL && token != NULL)
         {
-            decoder->operand1 = address(registers, strtk, memory);
+            if (strstr(token, "\n") != NULL) {
+                
+            }
+            decoder->operand1 = address(registers, token, memory);
+            printf("%s\n", token);
         }
-        else if(decoder->operand2 == NULL) {
-            decoder->operand2 = address(registers, strtk, memory);
+        else if(decoder->operand2 == NULL && token != NULL) {
+            decoder->operand2 = address(registers, token, memory);
+            printf("%s\n", token);
+
         }
-         */
-        strtk = strtok(NULL, " ,");
 
     }
+    
+    if (decoder->operand1 == NULL) {
+        printf("Operand: %s\n", decoder->opcode);
+    }
+    else if(decoder->operand2 == NULL) {
+        printf("Operand: %s      Operator1: %i\n", decoder->opcode, *decoder->operand1);
+
+    }
+    else {
+        printf("Operand: %s     Operator1: %i     Operator2: %i\n", decoder->opcode, *decoder->operand1, *decoder->operand2);
+    }
+
+}
+
+void execute_decoder(Registers *registers, Decoder* decoder, int *memory) {
+    
 }
 
 
@@ -93,7 +116,7 @@ int main(int argc, char* argv[])
     
     
     char* tab_location;
-    
+    char* newline_location;
     init_values(&registers, memory);
     
 
@@ -107,7 +130,6 @@ int main(int argc, char* argv[])
     buffer = malloc(sizeof(char*)*255);
     
     //loop reads in all of the contetns of the string include earlier. Each line is loaded sperately into the reader struct as a differnt line
-    //TODO: create methods ot remove the /n and turn tabs into spaces, as per instruction
     int instruction_counter = 0;
     
     
@@ -129,6 +151,11 @@ int main(int argc, char* argv[])
                 *temp = ' ';
             }
             
+            newline_location = strstr(buffer, "\n");
+            char* temp;
+            temp = newline_location;
+            *temp = '\0';
+            
             reader.lines[instruction_counter].info = malloc((strlen(buffer) + 1)*sizeof(char));
             
             strcpy(reader.lines[instruction_counter].info, buffer);
@@ -145,9 +172,13 @@ int main(int argc, char* argv[])
 
     
     for(int i = 0; i < instruction_counter; i++) {
+        decoder.operand1 = NULL;
+        decoder.operand2 = NULL;
+
         char* instruction;
         instruction = fetch_instruction(&registers, &reader);
         parse_instruction(&registers, &decoder, instruction, memory);
+        execute_decoder(&registers, &decoder, memory);
         
     }
     
