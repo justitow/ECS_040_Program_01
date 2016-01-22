@@ -82,11 +82,11 @@ void parse_instruction(Registers* registers, Decoder* decoder, char* instruction
                 
             }
             decoder->operand1 = address(registers, token, memory);
-            printf("%s\n", token);
+            //printf("%s\n", token);
         }
         else if(decoder->operand2 == NULL && token != NULL) {
             decoder->operand2 = address(registers, token, memory);
-            printf("%s\n", token);
+            //printf("%s\n", token);
 
         }
 
@@ -182,7 +182,7 @@ int main(int argc, char* argv[])
     
     FILE *fp;
 
-    fp = fopen("/Users/Sarv/ECS_040_Program_01/test.txt", "r");
+    fp = fopen("test.txt", "r");
     if (fp == NULL) {
         printf("File fucked up");
         return 0;
@@ -225,7 +225,7 @@ int main(int argc, char* argv[])
         parse_instruction(&registers, &decoder, instruction, memory);
         execute_decoder(&registers, &decoder, memory);
         parse_operand(&registers, &decoder, memory);
-        printf("%s     eip: %i  eax:  %i ebp:  %i esp:   %i", reader.lines[i].info, registers.regs[eip], registers.regs[eax], registers.regs[ebp], registers.regs[esp]);
+        printf("%s     eip: %i  eax:  %i ebp:  %i esp:   %i\n", reader.lines[i].info, registers.regs[eip], registers.regs[eax], registers.regs[ebp], registers.regs[esp]);
         
     }
     
