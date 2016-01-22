@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+//sodid is here
 
 //address() written by Sean Davis
 int* address(Registers *registers, char *operand, int memory[])
