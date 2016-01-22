@@ -94,17 +94,21 @@ void parse_instruction(Registers* registers, Decoder* decoder, char* instruction
     while(token != NULL)
     {
         token = strtok(NULL, " ,");
-        
+
         if(decoder->operand1 == NULL && token != NULL)
         {
             printf("%s", token);
             decoder->operand1 = address(registers, token, memory);
-        }
+        } //if ()
         
-        else if(decoder->operand2 == NULL && token != NULL)
+        else //there could be a second operand
         {
-            printf(", %s     ", token);
-            decoder->operand2 = address(registers, token, memory);
-        }
-    }
+
+            if(decoder->operand2 == NULL && token != NULL)
+            {
+                printf(", %s     ", token);
+                decoder->operand2 = address(registers, token, memory);
+            } // if()
+        } // else()
+    } // while()
 } //parse_instruction ()

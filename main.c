@@ -31,6 +31,7 @@ int* address(Registers *registers, char *operand, int memory[])
             break;
     
     ptr = strchr(operand, '(');
+    
     if(ptr) // some form of indirect addressing
     {
         *ptr = '\0';  // terminate operand string at first '('
@@ -52,13 +53,13 @@ void init_values(Registers* registers, int memory[])
     
     
     memory[1000] = 0;
-}
+} // init_values ()
 
 char* fetch_instruction(Registers* registers, Reader* reader)
 {
     registers->regs[eip] += 4;
     return reader->lines[(registers->regs[eip] - 104) / 4].info;
-}
+} //fetch_instruction ()
 
 int main(int argc, char* argv[])
 {
@@ -77,7 +78,7 @@ int main(int argc, char* argv[])
         parse_instruction(&registers, &decoder, instruction, memory);
         parse_operand(&registers, &decoder, memory);
         printf("  eip: %i  eax:  %i ebp:  %i esp:   %i\n", registers.regs[eip], registers.regs[eax], registers.regs[ebp], registers.regs[esp]);
-        
-    }
+    } // while ()
+    
     return 0;
 }  // main()
