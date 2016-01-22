@@ -22,13 +22,16 @@ void read_lines(Reader *reader)
     
     fp = fopen("/Users/justin/Developer/ECS_040_Project_01/ECS_040_Program_01/test.txt", "r");
 
-    if (fp == NULL) {
+    if (fp == NULL)
+    {
         printf("File fucked up\n");
     } // if
     
-    while (!(fgets(buffer, 255, fp) == NULL)) {
+    while (!(fgets(buffer, 255, fp) == NULL))
+    {
 
-        if ((strstr(buffer, ".") == NULL) && (strstr(buffer, ":") == NULL)) {
+        if ((strstr(buffer, ".") == NULL) && (strstr(buffer, ":") == NULL))
+        {
 
             while((tab_location = strstr(buffer, "\t")) != NULL){
                 char* temp;
