@@ -20,7 +20,7 @@ void read_lines(Reader *reader)
     FILE *fp;
     int instruction_counter = 0;
     
-    fp = fopen("/Users/justin/Developer/ECS_040_Project_01/ECS_040_Program_01/test.txt", "r");
+    fp = fopen("/Users/Sarv/ECS_040_Program_01/test.txt", "r");
     if (fp == NULL) {
         printf("File fucked up\n");
     }
