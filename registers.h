@@ -11,7 +11,8 @@
 
 #include <stdio.h>
 
-typedef struct Registers {
+typedef struct Registers
+{
     int regs[4];
 } Registers;
 

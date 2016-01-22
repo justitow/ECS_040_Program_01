@@ -57,7 +57,7 @@ void init_values(Registers* registers, int memory[])
 char* fetch_instruction(Registers* registers, Reader* reader)
 {
     registers->regs[eip] += 4;
-    return reader->lines[(registers->regs[eip] - 104)/4].info;
+    return reader->lines[(registers->regs[eip] - 104) / 4].info;
 }
 
 int main(int argc, char* argv[])
@@ -67,78 +67,17 @@ int main(int argc, char* argv[])
     Reader reader;
     int memory[1001];
     
-    
-    char* tab_location;
-    char* newline_location;
     init_values(&registers, memory);
+    read_lines(&reader);
     
-
-    // This code allows a file to be read and for the data to be passed reader.info's character array
-    
-    
-    
-
-    //TODO: create method to input filename by command line argument
-    char *buffer;
-    buffer = malloc(sizeof(char*)*255);
-    
-    //loop reads in all of the contetns of the string include earlier. Each line is loaded sperately into the reader struct as a differnt line
-    int instruction_counter = 0;
-    
-    
-    FILE *fp;
-
-    fp = fopen("/Users/justin/Developer/ECS_040_Project_01/ECS_040_Program_01/test.txt", "r");
-    if (fp == NULL) {
-        printf("File fucked up\n");
-        return 0;
-    }
-    
-    
-    // Reads the data from the .s file and puts it into the reader stuct, while prettying it up a bit
-    while (!(fgets(buffer, 255, fp) == NULL)) {
-        if ((strstr(buffer, ".") == NULL) && (strstr(buffer, ":") == NULL)) {
-            while((tab_location = strstr(buffer, "\t")) != NULL){
-                char* temp;
-                temp = tab_location;
-                *temp = ' ';
-            }
-            
-            newline_location = strstr(buffer, "\n");
-            char* temp;
-            temp = newline_location;
-            *temp = '\0';
-            
-            reader.lines[instruction_counter].info = malloc((strlen(buffer) + 1)*sizeof(char));
-            
-            strcpy(reader.lines[instruction_counter].info, buffer);
-            
-            reader.lines[instruction_counter].address = 100  + (4 * instruction_counter);
-            
-            //printf("%s", reader.lines[instruction_counter].info);
-            instruction_counter++;
-        }
-    }
-    
-    //close the file
-    fclose(fp);
-
-    printf("%i \n", memory[1000]);
-    while(registers.regs[eip] != 0) {
+    while(registers.regs[eip] != 0)
+    {
         char* instruction;
         instruction = fetch_instruction(&registers, &reader);
         parse_instruction(&registers, &decoder, instruction, memory);
         parse_operand(&registers, &decoder, memory);
-        printf("eip: %i  eax:  %i ebp:  %i esp:   %i\n", registers.regs[eip], registers.regs[eax], registers.regs[ebp], registers.regs[esp]);
+        printf("  eip: %i  eax:  %i ebp:  %i esp:   %i\n", registers.regs[eip], registers.regs[eax], registers.regs[ebp], registers.regs[esp]);
         
     }
-    
-    //DEBUG LOOP FOR CONTENTS OF READER.INFO
-    //for(int i = 0; i < instruction_counter; i++) {
-    //    printf("%s", reader.lines[i].info);
-    //}
-    //printf("\n");
-    //
-    
     return 0;
 }  // main()

@@ -15,9 +15,11 @@
 #include "registers.h"
 #include "reader.h"
 
-typedef struct Reader {
+typedef struct Reader
+{
     Instruction lines[1000];
 } Reader;
 
+void read_lines(Reader* reader);
 
 #endif // reader_h 

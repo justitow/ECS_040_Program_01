@@ -14,7 +14,8 @@
 
 #include "registers.h"
 
-typedef struct Decoder {
+typedef struct Decoder
+{
     char opcode[20];
     int* operand1;
     int* operand2;

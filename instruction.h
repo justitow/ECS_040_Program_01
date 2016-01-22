@@ -11,7 +11,8 @@
 
 #include <stdio.h>
 
-typedef struct _Instruction {
+typedef struct _Instruction
+{
     char* info;
     int address;
 } Instruction;
