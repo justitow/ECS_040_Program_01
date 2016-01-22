@@ -67,7 +67,11 @@ void parse_instruction(Registers* registers, Decoder* decoder, char* instruction
     token = malloc(sizeof(char*)*21);
     token = strtok(instruction, " ,");
     strcpy(decoder->opcode, token);
+    decoder->operand1 = NULL;
+    decoder->operand2 = NULL;
 
+    
+    
     while(token != NULL){
         //printf("%s\n", *token);
         token = strtok(NULL, " ,");
@@ -89,7 +93,7 @@ void parse_instruction(Registers* registers, Decoder* decoder, char* instruction
 
     }
     
-    if (decoder->operand1 == NULL) {
+    /*if (decoder->operand1 == NULL) {
         printf("Operand: %s\n", decoder->opcode);
     }
     else if(decoder->operand2 == NULL) {
@@ -98,7 +102,7 @@ void parse_instruction(Registers* registers, Decoder* decoder, char* instruction
     }
     else {
         printf("Operand: %s     Operator1: %i     Operator2: %i\n", decoder->opcode, *decoder->operand1, *decoder->operand2);
-    }
+    }*/
 
 }
 
@@ -106,6 +110,50 @@ void execute_decoder(Registers *registers, Decoder* decoder, int *memory) {
     
 }
 
+void parse_operand(Registers *registers, Decoder* decoder, int *memory){
+    
+    if(!(strcmp(decoder->opcode, "addl"))){
+        
+        addl(decoder->operand1, decoder->operand2);
+        
+        
+    }
+    else if (!(strcmp(decoder->opcode, "andl"))){
+        
+        andl(decoder->operand1, decoder->operand2);
+    }
+    else if(!(strcmp(decoder->opcode, "leave"))){
+        
+        leave(registers, memory);
+        
+    }
+    else if(!(strcmp(decoder->opcode, "movl"))){
+    
+        movl(decoder->operand1, decoder->operand2);
+        
+    }
+    else if(!(strcmp(decoder->opcode, "pushl"))){
+        
+        pushl(decoder->operand1, memory, registers);
+    
+    }
+    else if(!(strcmp(decoder->opcode, "ret"))){
+        
+        ret(registers, memory);
+    
+    }
+    else if(!(strcmp(decoder->opcode, "subl"))){
+        
+        subl(decoder->operand1, decoder->operand2);
+        
+    }
+    else{
+        fprintf(stderr, "An error occured: %s\n", decoder->opcode);
+        
+    }
+
+
+}
 
 int main(int argc, char* argv[])
 {
@@ -135,7 +183,7 @@ int main(int argc, char* argv[])
     
     FILE *fp;
 
-    fp = fopen("/Users/justin/Developer/ECS_040_Project_01/ECS_040_Program_01/test.txt", "r");
+    fp = fopen("/Users/Sarv/ECS_040_Program_01/test.txt", "r");
     if (fp == NULL) {
         printf("File fucked up");
         return 0;
@@ -162,7 +210,7 @@ int main(int argc, char* argv[])
             
             reader.lines[instruction_counter].address = 100  + (4 * instruction_counter);
             
-            //printf("%s", *reader.lines[instruction_counter].info);
+            //printf("%s", reader.lines[instruction_counter].info);
             instruction_counter++;
         }
     }
@@ -172,13 +220,13 @@ int main(int argc, char* argv[])
 
     
     for(int i = 0; i < instruction_counter; i++) {
-        decoder.operand1 = NULL;
-        decoder.operand2 = NULL;
-
+        
         char* instruction;
         instruction = fetch_instruction(&registers, &reader);
         parse_instruction(&registers, &decoder, instruction, memory);
         execute_decoder(&registers, &decoder, memory);
+        parse_operand(&registers, &decoder, memory);
+        printf("%s     eip: %i  eax:  %i ebp:  %i esp:   %i", reader.lines[i].info, registers.regs[eip], registers.regs[eax], registers.regs[ebp], registers.regs[esp]);
         
     }
     
