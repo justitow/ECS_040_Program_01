@@ -30,4 +30,4 @@ void subl(int *op1, int *op2);
 
 void parse_operand(Registers *registers, Decoder* decoder, int memory[]);
 void parse_instruction(Registers* registers, Decoder* decoder, char* instruction, int memory[]);
-#endif /* decoder_h */
+#endif // decoder_h

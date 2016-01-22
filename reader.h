@@ -20,4 +20,4 @@ typedef struct Reader {
 } Reader;
 
 
-#endif /* reader_h */
+#endif // reader_h 

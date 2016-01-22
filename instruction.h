@@ -16,4 +16,4 @@ typedef struct _Instruction {
     int address;
 } Instruction;
 
-#endif /* instruction_h */
+#endif // instruction_h 

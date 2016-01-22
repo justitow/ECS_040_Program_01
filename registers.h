@@ -16,7 +16,4 @@ typedef struct Registers {
 } Registers;
 
 
-
-
-
-#endif /* registers_h */
+#endif // registers_h
