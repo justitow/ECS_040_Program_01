@@ -58,38 +58,25 @@ void parse_operand(Registers *registers, Decoder* decoder, int memory[])
 {
 
     if(!(strcmp(decoder->opcode, "addl"))) //opcode is addl
-    {
         addl(decoder->operand1, decoder->operand2);
-    } // calls addl()
-    else if (!(strcmp(decoder->opcode, "andl"))) //opcode is andl
-    {
+
+    if (!(strcmp(decoder->opcode, "andl"))) //opcode is andl
         andl(decoder->operand1, decoder->operand2);
-    } // calls andl()
-
-    else if(!(strcmp(decoder->opcode, "leave"))) //opcode is leave
-    {
-        leave(registers, memory);
-    } //calls andl()
     
-    else if(!(strcmp(decoder->opcode, "movl"))) //opcode is movl
-    {
+    if(!(strcmp(decoder->opcode, "leave"))) //opcode is leave
+        leave(registers, memory);
+    
+    if(!(strcmp(decoder->opcode, "movl"))) //opcode is movl
         movl(decoder->operand1, decoder->operand2);
-    } //calls movl()
 
-    else if(!(strcmp(decoder->opcode, "pushl"))) //opcode is pushl
-    {
+    if(!(strcmp(decoder->opcode, "pushl"))) //opcode is pushl
         pushl(decoder->operand1, memory, registers);
-    } //calls pushl
 
-    else if(!(strcmp(decoder->opcode, "ret"))) //opcode is ret
-    {
+    if(!(strcmp(decoder->opcode, "ret"))) //opcode is ret
         ret(registers, memory);
-    }
 
-    else if(!(strcmp(decoder->opcode, "subl"))) //opcode is subl
-    {
+    if(!(strcmp(decoder->opcode, "subl"))) //opcode is subl
         subl(decoder->operand1, decoder->operand2);
-    } //calls subl
 } //parse_operand ()
 
 void parse_instruction(Registers* registers, Decoder* decoder, char* instruction, int memory[])
