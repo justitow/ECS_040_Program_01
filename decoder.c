@@ -54,9 +54,5 @@ void ret(Registers *registers, int *memory){
 
 
 void subl(int *op1, int *op2){
-    
-    
-    *op2 = *op1 - *op2;
-    
-    
+    *op2 = *op2 - *op1;
 }
