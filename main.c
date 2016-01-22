@@ -132,13 +132,13 @@ int main(int argc, char* argv[])
         printf("eip: %i  eax:  %i ebp:  %i esp:   %i\n", registers.regs[eip], registers.regs[eax], registers.regs[ebp], registers.regs[esp]);
         
     }
-    /*
+    
     //DEBUG LOOP FOR CONTENTS OF READER.INFO
-    for(int i = 0; i < instruction_counter; i++) {
-        printf("%s", reader.lines[i].info);
-    }
-    printf("\n");
-    */
+    //for(int i = 0; i < instruction_counter; i++) {
+    //    printf("%s", reader.lines[i].info);
+    //}
+    //printf("\n");
+    //
     
     return 0;
 }  // main()

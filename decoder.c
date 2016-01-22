@@ -56,7 +56,6 @@ void subl(int *op1, int *op2)
 
 void parse_operand(Registers *registers, Decoder* decoder, int memory[])
 {
-    
     if(!(strcmp(decoder->opcode, "addl")))
     {
         addl(decoder->operand1, decoder->operand2);
@@ -90,11 +89,6 @@ void parse_operand(Registers *registers, Decoder* decoder, int memory[])
     else if(!(strcmp(decoder->opcode, "subl")))
     {
         subl(decoder->operand1, decoder->operand2);
-    }
-    
-    else
-    {
-        fprintf(stderr, "An error occured: %s\n", decoder->opcode);
     }
 } //parse_operand ()
 
