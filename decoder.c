@@ -14,24 +14,24 @@
 void addl(int* op1, int* op2)
 {
     *op2 = *op1 + *op2;
-}
+} // addl ()
 
 void andl(int *op1, int *op2)
 {
     *op2 = *op1 & *op2;
-}
+} //andl ()
 
 void leave(Registers *registers, int memory[])
 {
     registers->regs[esp] = registers->regs[ebp];
     registers->regs[esp] = memory[registers->regs[ebp]]+4;
-}
+} //leave ()
 
 
 void movl(int *op1, int *op2)
 {
     *op2 = *op1;
-}
+} //movl ()
 
 
 
@@ -39,20 +39,20 @@ void pushl(int *op1, int memory[], Registers *registers)
 {
     registers->regs[esp] -= 4;
     memory[registers->regs[esp]] = *op1;
-}
+} //pushl ()
 
 
 void ret(Registers *registers, int memory[])
 {
     registers->regs[eip] = memory[registers->regs[esp]];
     registers->regs[esp] += 4;
-}
+} //ret ()
 
 
 void subl(int *op1, int *op2)
 {
     *op2 = *op2 - *op1;
-}
+} //subl ()
 
 void parse_operand(Registers *registers, Decoder* decoder, int memory[])
 {
@@ -87,7 +87,7 @@ void parse_operand(Registers *registers, Decoder* decoder, int memory[])
     else{
         fprintf(stderr, "An error occured: %s\n", decoder->opcode);
     }
-}
+} //parse_operand ()
 
 void parse_instruction(Registers* registers, Decoder* decoder, char* instruction, int memory[])
 {
@@ -112,4 +112,4 @@ void parse_instruction(Registers* registers, Decoder* decoder, char* instruction
             decoder->operand2 = address(registers, token, memory);
         }
     }
-}
+} //parse_instruction ()
