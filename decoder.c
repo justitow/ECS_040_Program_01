@@ -60,12 +60,10 @@ void parse_operand(Registers *registers, Decoder* decoder, int memory[])
     if(!(strcmp(decoder->opcode, "addl")))
     {
         addl(decoder->operand1, decoder->operand2);
-    }
-    else if (!(strcmp(decoder->opcode, "andl")))
+    } else if (!(strcmp(decoder->opcode, "andl")))
     {
         andl(decoder->operand1, decoder->operand2);
-    }
-    else if(!(strcmp(decoder->opcode, "leave")))
+    }else if(!(strcmp(decoder->opcode, "leave")))
     {
         leave(registers, memory);
     }
