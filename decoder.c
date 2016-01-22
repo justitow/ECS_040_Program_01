@@ -62,10 +62,10 @@ void parse_operand(Registers *registers, Decoder* decoder, int memory[])
 
     if (!(strcmp(decoder->opcode, "andl"))) //opcode is andl
         andl(decoder->operand1, decoder->operand2);
-    
+
     if(!(strcmp(decoder->opcode, "leave"))) //opcode is leave
         leave(registers, memory);
-    
+
     if(!(strcmp(decoder->opcode, "movl"))) //opcode is movl
         movl(decoder->operand1, decoder->operand2);
 
