@@ -61,7 +61,6 @@ void parse_operand(Registers *registers, Decoder* decoder, int memory[])
     {
         addl(decoder->operand1, decoder->operand2);
     } // calls addl()
-
     else if (!(strcmp(decoder->opcode, "andl"))) //opcode is andl
     {
         andl(decoder->operand1, decoder->operand2);
@@ -71,7 +70,7 @@ void parse_operand(Registers *registers, Decoder* decoder, int memory[])
     {
         leave(registers, memory);
     } //calls andl()
-
+    
     else if(!(strcmp(decoder->opcode, "movl"))) //opcode is movl
     {
         movl(decoder->operand1, decoder->operand2);
