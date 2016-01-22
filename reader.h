@@ -12,6 +12,8 @@
 
 #include <stdio.h>
 #include "instruction.h"
+#include "registers.h"
+#include "reader.h"
 
 typedef struct Reader {
     Instruction lines[1000];

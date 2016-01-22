@@ -43,7 +43,7 @@ int* address(Registers *registers, char *operand, int memory[])
 } // address ()
 
 //intialize the values of the registers to a new CPU
-void init_values(Registers* registers, int *memory) {
+void init_values(Registers* registers, int memory[]) {
     registers->regs[esp] = 1000;
     registers->regs[eax] = 0;
     registers->regs[ebp] = 996;
@@ -59,90 +59,6 @@ void init_values(Registers* registers, int *memory) {
 char* fetch_instruction(Registers* registers, Reader* reader) {
     registers->regs[eip] += 4;
     return reader->lines[(registers->regs[eip] - 104)/4].info;
-}
-
-void parse_instruction(Registers* registers, Decoder* decoder, char* instruction, int *memory) {
-    char *token;
-    token = malloc(sizeof(char*)*21);
-    
-    token = strtok(instruction, " ,");
-    
-    strcpy(decoder->opcode, token);
-    
-    decoder->operand1 = NULL;
-    decoder->operand2 = NULL;
-    
-    
-    printf("%s", token);
-    while(token != NULL){
-        //printf("%s\n", *token);
-        token = strtok(NULL, " ,");
-        
-        if(decoder->operand1 == NULL && token != NULL)
-        {
-            printf("  %s  ", token);
-            decoder->operand1 = address(registers, token, memory);
-            //printf("%s\n", token);
-        }
-        else if(decoder->operand2 == NULL && token != NULL) {
-            printf(", %s     ", token);
-            decoder->operand2 = address(registers, token, memory);
-            //printf("%s\n", token);
-
-        }
-
-    }
-    /*
-    if (decoder->operand1 == NULL) {
-        printf("Operand: %s\n", decoder->opcode);
-    }
-    else if(decoder->operand2 == NULL) {
-        printf("Operand: %s      Operator1: %i\n", decoder->opcode, *decoder->operand1);
-    }
-    else {
-        printf("Operand: %s     Operator1: %i     Operator2: %i\n", decoder->opcode, *decoder->operand1, *decoder->operand2);
-    }
-    */
-
-}
-
-
-
-void parse_operand(Registers *registers, Decoder* decoder, int *memory){
-    
-    if(!(strcmp(decoder->opcode, "addl"))){
-        addl(decoder->operand1, decoder->operand2);
-    }
-    
-    else if (!(strcmp(decoder->opcode, "andl"))){
-        andl(decoder->operand1, decoder->operand2);
-    }
-    
-    else if(!(strcmp(decoder->opcode, "leave"))){
-        leave(registers, memory);
-    }
-    
-    else if(!(strcmp(decoder->opcode, "movl"))){
-        movl(decoder->operand1, decoder->operand2);
-    }
-    
-    else if(!(strcmp(decoder->opcode, "pushl"))){
-        pushl(decoder->operand1, memory, registers);
-    }
-    
-    else if(!(strcmp(decoder->opcode, "ret"))){
-        ret(registers, memory);
-    }
-    
-    else if(!(strcmp(decoder->opcode, "subl"))){
-        subl(decoder->operand1, decoder->operand2);
-    }
-    
-    else{
-        fprintf(stderr, "An error occured: %s\n", decoder->opcode);
-    }
-
-
 }
 
 int main(int argc, char* argv[])
@@ -208,9 +124,8 @@ int main(int argc, char* argv[])
     //close the file
     fclose(fp);
 
-    
-    for(int i = 0; i < instruction_counter; i++) {
-        
+    printf("%i \n", memory[1000]);
+    while(registers.regs[eip] != 0) {
         char* instruction;
         instruction = fetch_instruction(&registers, &reader);
         parse_instruction(&registers, &decoder, instruction, memory);
@@ -218,9 +133,6 @@ int main(int argc, char* argv[])
         printf("eip: %i  eax:  %i ebp:  %i esp:   %i\n", registers.regs[eip], registers.regs[eax], registers.regs[ebp], registers.regs[esp]);
         
     }
-    
-    
-    
     /*
     //DEBUG LOOP FOR CONTENTS OF READER.INFO
     for(int i = 0; i < instruction_counter; i++) {
