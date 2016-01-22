@@ -10,6 +10,5 @@ void init_values(Registers* registers, int *memory);
 
 char* fetch_instruction(Registers* registers, Reader* reader);
 void parse_instruction(Registers* registers, Decoder* decoder, char* instruction, int* memory);
-void execute_decoder(Registers *registers, Decoder* decoder, int *memory);
 
 void parse_operand(Registers *registers, Decoder* decoder, int *memory);

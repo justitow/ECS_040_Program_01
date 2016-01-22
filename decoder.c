@@ -48,10 +48,8 @@ void pushl(int *op1, int *memory, Registers *registers){
 
 
 void ret(Registers *registers, int *memory){
-    
     memory[registers->regs[eip]] = memory[registers->regs[esp]];
     registers->regs[esp] += 4;
-    
 }
 
 
