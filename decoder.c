@@ -11,56 +11,51 @@
 #include "main.h"
 #include <stdlib.h>
 
-void addl(int* op1, int* op2){
+void addl(int* op1, int* op2)
+{
     *op2 = *op1 + *op2;
 }
 
-void andl(int *op1, int *op2){
-    
-    
+void andl(int *op1, int *op2)
+{
     *op2 = *op1 & *op2;
 }
 
-void leave(Registers *registers, int memory[]){
-    
+void leave(Registers *registers, int memory[])
+{
     registers->regs[esp] = registers->regs[ebp];
     registers->regs[esp] = memory[registers->regs[ebp]]+4;
-    
 }
 
 
-void movl(int *op1, int *op2){
-    
+void movl(int *op1, int *op2)
+{
     *op2 = *op1;
-    
-    
 }
 
 
 
-void pushl(int *op1, int memory[], Registers *registers){
-    
+void pushl(int *op1, int memory[], Registers *registers)
+{
     registers->regs[esp] -= 4;
     memory[registers->regs[esp]] = *op1;
-    
-    
 }
 
 
-void ret(Registers *registers, int memory[]){
-    //printf("%i %i\n", registers->regs[esp], memory[1000]);
+void ret(Registers *registers, int memory[])
+{
     registers->regs[eip] = memory[registers->regs[esp]];
-    //printf("%i %i\n", memory[registers->regs[esp]], registers->regs[eip]);
     registers->regs[esp] += 4;
 }
 
 
-void subl(int *op1, int *op2){
+void subl(int *op1, int *op2)
+{
     *op2 = *op2 - *op1;
 }
 
-void parse_operand(Registers *registers, Decoder* decoder, int memory[]){
-    
+void parse_operand(Registers *registers, Decoder* decoder, int memory[])
+{
     if(!(strcmp(decoder->opcode, "addl"))){
         addl(decoder->operand1, decoder->operand2);
     }
@@ -94,8 +89,8 @@ void parse_operand(Registers *registers, Decoder* decoder, int memory[]){
     }
 }
 
-
-void parse_instruction(Registers* registers, Decoder* decoder, char* instruction, int memory[]) {
+void parse_instruction(Registers* registers, Decoder* decoder, char* instruction, int memory[])
+{
     char *token;
     token = malloc(sizeof(char*)*21);
     decoder->operand1 = NULL;

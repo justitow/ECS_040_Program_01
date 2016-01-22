@@ -43,7 +43,8 @@ int* address(Registers *registers, char *operand, int memory[])
 } // address ()
 
 //intialize the values of the registers to a new CPU
-void init_values(Registers* registers, int memory[]) {
+void init_values(Registers* registers, int memory[])
+{
     registers->regs[esp] = 1000;
     registers->regs[eax] = 0;
     registers->regs[ebp] = 996;
@@ -51,12 +52,10 @@ void init_values(Registers* registers, int memory[]) {
     
     
     memory[1000] = 0;
-    
-    
-    
 }
 
-char* fetch_instruction(Registers* registers, Reader* reader) {
+char* fetch_instruction(Registers* registers, Reader* reader)
+{
     registers->regs[eip] += 4;
     return reader->lines[(registers->regs[eip] - 104)/4].info;
 }
