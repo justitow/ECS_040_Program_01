@@ -79,7 +79,7 @@ void parse_operand(Registers *registers, Decoder* decoder, int memory[])
         subl(decoder->operand1, decoder->operand2);
 } //parse_operand ()
 
-void parse_instruction(Registers* registers, Decoder* decoder, char* instruction, int memory[])
+void parse(Registers* registers, Decoder* decoder, char* instruction, int memory[])
 {
     char *token;
     token = malloc(sizeof(char*)*21);
