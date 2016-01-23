@@ -36,19 +36,24 @@ void read_lines(Reader *reader, char* argv)
             reader->lines[ic].address = 100  + (4 * ic);
             ic++;
         } // if ()
+
     } // while ()
+
     fclose(fp);
 }
 
 void tab_to_ws(char* buffer)
 {
+
     char* tab;
     
-    while((tab = strstr(buffer, "\t")) != NULL){
+    while((tab = strstr(buffer, "\t")) != NULL)
+    {
         char* temp;
         temp = tab;
         *temp = ' ';
     } // while()
+
 } //remove_tab()
 
 void newline_to_null(char* buffer)
@@ -58,4 +63,4 @@ void newline_to_null(char* buffer)
     char* temp;
     temp = nl;
     *temp = '\0';
-}
+} //newling_to_null
