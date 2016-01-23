@@ -69,7 +69,7 @@ int main(int argc, char* argv[])
     int memory[1001];
     
     init_values(&registers, memory);
-    read_lines(&reader);
+    read_lines(&reader, argv[1]);
     
     while(registers.regs[eip] != 0)
     {

@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void read_lines(Reader *reader)
+void read_lines(Reader *reader, char* argv)
 {
     char* tab_location;
     char* newline_location;
@@ -20,15 +20,9 @@ void read_lines(Reader *reader)
     FILE *fp;
     int instruction_counter = 0;
     
-<<<<<<< HEAD
-    fp = fopen("/Users/Sarv/ECS_040_Program_01/test.txt", "r");
-    if (fp == NULL) {
-=======
-    fp = fopen("/Users/justin/Developer/ECS_040_Project_01/ECS_040_Program_01/test.txt", "r");
 
-    if (fp == NULL)
-    {
->>>>>>> ac79ab098f20b46326c8beb96f35178c4c660631
+    fp = fopen(argv, "r");
+    if (fp == NULL) {
         printf("File fucked up\n");
     } // if
     

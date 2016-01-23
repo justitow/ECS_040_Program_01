@@ -1,19 +1,30 @@
-CC=gcc
-CFLAGS=-c -Wall
-LDFLAGS=
-SOURCES=main.c decoder.c functions.c reader.c registers.c
-OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=CPU.out
+CC = gcc
+CFLAGS = -Wall -g
+INCLUDES = -I./
+LFLAGS=
+LIBS=
 
-all: $(SOURCES) $(EXECUTABLE)
-    
-$(EXECUTABLE): $(OBJECTS) 
-	$(CC) $(LDFLAGS) $
-	(OBJECTS) -o $@
+SRCS = main.c decoder.c registers.c reader.c instruction.c
+
+OBJS = $(SRCS:.c=.o)
+
+MAIN = CPU.out
+
+.PHONY: depend clean
+
+all:	$(MAIN)
+	@echo  Simple compiler named CPU.out has been compiled
+
+$(MAIN): $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(MAIN) $(OBJS) $(LFLAGS) $(LIBS)
 
 .c.o:
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $<   -o  $@
 
-.PHONY: clean
 clean:
-	-rm edit $(OBJECTS)
+	$(RM) *.o *~ $(MAIN)
+
+depend:  $(SRCS)
+	makedepend $(INCLUDES) $^
+
+#  DO NOT DELETE THIS LINE

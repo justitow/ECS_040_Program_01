@@ -20,6 +20,6 @@ typedef struct Reader
     Instruction lines[1000];
 } Reader;
 
-void read_lines(Reader* reader);
+void read_lines(Reader* reader, char* argv);
 
 #endif // reader_h 
