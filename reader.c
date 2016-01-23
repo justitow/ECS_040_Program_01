@@ -40,7 +40,7 @@ void read_lines(Reader *reader, char* argv)
     } // while ()
 
     fclose(fp);
-}
+} //read_lines()
 
 void tab_to_ws(char* buffer)
 {
