@@ -13,17 +13,15 @@
 
 void read_lines(Reader *reader, char* argv)
 {
-    char* tab_location;
-    char* newline_location;
     char *buffer;
     buffer = malloc(sizeof(char*) * 255);
     FILE *fp;
-    int instruction_counter = 0;
-    
-
+    int ic = 0;
     fp = fopen(argv, "r");
-    if (fp == NULL) {
-        printf("File fucked up\n");
+
+    if (fp == NULL)
+    {
+        printf("Big errors \n");
     } // if
     
     while (!(fgets(buffer, 255, fp) == NULL))
@@ -31,21 +29,33 @@ void read_lines(Reader *reader, char* argv)
 
         if ((strstr(buffer, ".") == NULL) && (strstr(buffer, ":") == NULL))
         {
-
-            while((tab_location = strstr(buffer, "\t")) != NULL){
-                char* temp;
-                temp = tab_location;
-                *temp = ' ';
-            } // while()
-            newline_location = strstr(buffer, "\n");
-            char* temp;
-            temp = newline_location;
-            *temp = '\0';
-            reader->lines[instruction_counter].info = malloc((strlen(buffer) + 1)*sizeof(char));
-            strcpy(reader->lines[instruction_counter].info, buffer);
-            reader->lines[instruction_counter].address = 100  + (4 * instruction_counter);
-            instruction_counter++;
+            tab_to_ws(buffer);
+            newline_to_null(buffer);
+            reader->lines[ic].info = malloc((strlen(buffer) + 1)*sizeof(char));
+            strcpy(reader->lines[ic].info, buffer);
+            reader->lines[ic].address = 100  + (4 * ic);
+            ic++;
         } // if ()
     } // while ()
     fclose(fp);
+}
+
+void tab_to_ws(char* buffer)
+{
+    char* tab;
+    
+    while((tab = strstr(buffer, "\t")) != NULL){
+        char* temp;
+        temp = tab;
+        *temp = ' ';
+    } // while()
+} //remove_tab()
+
+void newline_to_null(char* buffer)
+{
+    char* nl;
+    nl = strstr(buffer, "\n");
+    char* temp;
+    temp = nl;
+    *temp = '\0';
 }
