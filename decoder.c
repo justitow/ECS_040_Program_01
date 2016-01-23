@@ -79,14 +79,14 @@ void parse_operand(Registers *registers, Decoder* decoder, int memory[])
         subl(decoder->operand1, decoder->operand2);
 } //parse_operand ()
 
-void parse(Registers* registers, Decoder* decoder, char* instruction, int memory[])
+void parse(Registers* registers, Decoder* decoder, char* line, int memory[])
 {
     char *token;
     token = malloc(sizeof(char*)*21);
     decoder->operand1 = NULL;
     decoder->operand2 = NULL;
     
-    token = strtok(instruction, " ,");
+    token = strtok(line, " ,");
     strcpy(decoder->opcode, token);
     
     printf("%s  ", token);
