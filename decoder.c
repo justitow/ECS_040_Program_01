@@ -81,23 +81,24 @@ void parse_operand(Registers *registers, Decoder* decoder, int memory[])
 
 void parse(Registers* registers, Decoder* decoder, char* line, int memory[])
 {
-    char *token;
+    char *token, *output, *op1, *op2;
     token = malloc(sizeof(char*)*21);
+    output = malloc(sizeof(char*)*21);
+    op1 = malloc(sizeof(char*)*10);
+    op2 = malloc(sizeof(char*)*10);
     decoder->operand1 = NULL;
     decoder->operand2 = NULL;
-    
     token = strtok(line, " ,");
     strcpy(decoder->opcode, token);
-    
-    printf("%s  ", token);
-    
+    strcpy(output, token);
+
     while(token != NULL)
     {
         token = strtok(NULL, " ,");
 
         if(decoder->operand1 == NULL && token != NULL)
         {
-            printf("%s", token);
+            strcpy(op1, token);
             decoder->operand1 = address(registers, token, memory);
         } //if ()
         
@@ -106,9 +107,14 @@ void parse(Registers* registers, Decoder* decoder, char* line, int memory[])
 
             if(decoder->operand2 == NULL && token != NULL)
             {
-                printf(", %s     ", token);
+                strcpy(op2, token);
                 decoder->operand2 = address(registers, token, memory);
             } // if()
         } // else()
     } // while()
+    strcat(output, " ");
+    strcat(output, op1);
+    strcat(output, ", ");
+    strcat(output, op2);
+    printf("%*s", -20, output);
 } //parse_instruction ()
