@@ -1,0 +1,24 @@
+Processing :  /home/jmweich/ECS_040_Program_01/main.c
+Processing :  /home/jmweich/ECS_040_Program_01/decoder.c
+Processing :  /home/jmweich/ECS_040_Program_01/decoder.h
+Processing :  /home/jmweich/ECS_040_Program_01/instruction.c
+Processing :  /home/jmweich/ECS_040_Program_01/instruction.h
+Processing :  /home/jmweich/ECS_040_Program_01/main.h
+Processing :  /home/jmweich/ECS_040_Program_01/reader.c
+Processing :  /home/jmweich/ECS_040_Program_01/reader.h
+Processing :  /home/jmweich/ECS_040_Program_01/registers.c
+Processing :  /home/jmweich/ECS_040_Program_01/registers.h
+
+
+=================================== Summary Report ===================================
+ ** Total Available Rules     : 52
+ ** Total Applied Rules       : 31
+ ** Total Violated Rules      : 0
+ ** Total Errors Occurs       : 0
+ ** Total Analyzed Files      : 10
+ ** Total Violated Files Count: 0
+ ** Build Quality             : 100.00%
+
+================================ Violated Rule Details ===============================
+
+================================ Violated File Details ===============================
