@@ -14,7 +14,7 @@
 void read_lines(Reader *reader, char* argv)
 {
     char *buffer;
-    buffer = malloc(sizeof(char*) * 255);
+    buffer = (char*)malloc(sizeof(char*) * 255);
     FILE *fp;
     int ic = 0;
     fp = fopen(argv, "r");
@@ -26,12 +26,12 @@ void read_lines(Reader *reader, char* argv)
     
     while (!(fgets(buffer, 255, fp) == NULL))
     {
-
+	
         if ((strstr(buffer, ".") == NULL) && (strstr(buffer, ":") == NULL))
         {
             tab_to_ws(buffer);
             newline_to_null(buffer);
-            reader->lines[ic].info = malloc((strlen(buffer) + 1)*sizeof(char));
+            reader->lines[ic].info = (char*)malloc((strlen(buffer) + 1)*sizeof(char));
             strcpy(reader->lines[ic].info, buffer);
             reader->lines[ic].address = 100  + (4 * ic);
             ic++;
