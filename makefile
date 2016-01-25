@@ -9,6 +9,7 @@ decoder.o: decoder.c decoder.h
 	$(CC) decoder.c 
 reader.o: reader.c reader.h
 	$(CC) reader.c
-registers.o: reagisters.c registers.h
+registers.o: registers.c registers.h
 	$(CC) registers.c
-
+clean:
+	rm *.o CPU.out
