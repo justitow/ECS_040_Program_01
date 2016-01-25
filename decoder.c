@@ -112,9 +112,14 @@ void parse(Registers* registers, Decoder* decoder, char* line, int memory[])
             } // if()
         } // else()
     } // while()
+    
     strcat(output, " ");
     strcat(output, op1);
+
+    if(strcmp(op2, ""))
+    {
     strcat(output, ", ");
     strcat(output, op2);
+    }
     printf("%*s", -20, output);
 } //parse_instruction ()
