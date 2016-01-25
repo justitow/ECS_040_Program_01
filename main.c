@@ -54,6 +54,55 @@ void init_values(Registers* registers, int memory[])
     memory[1000] = 0;
 } // init_values ()
 
+
+void parse(Registers* registers, Decoder* decoder, char* line, int memory[])
+{
+    char *token, *output, *op1, *op2;
+    op1 = NULL;
+    op2 = NULL;
+    token =(char*)malloc(sizeof(char*)*21);
+    output = (char*)malloc(sizeof(char*)*21);
+    op1 = (char*)malloc(sizeof(char*)*10);
+    decoder->operand1 = NULL;
+    decoder->operand2 = NULL;
+    token = strtok(line, " ,");
+    strcpy(decoder->opcode, token);
+    strcpy(output, token);
+    
+    while(token != NULL)
+    {
+        token = strtok(NULL, " ,");
+        
+        if(decoder->operand1 == NULL && token != NULL)
+        {
+            strcpy(op1, token);
+            decoder->operand1 = address(registers, token, memory);
+        } //if ()
+        
+        else //there could be a second operand
+        {
+            
+            if(decoder->operand2 == NULL && token != NULL)
+            {
+                op2 = (char*)malloc(sizeof(char*)*10);
+                strcpy(op2, token);
+                decoder->operand2 = address(registers, token, memory);
+            } // if()
+        } // else()
+    } // while()
+    
+    strcat(output, " ");
+    strcat(output, op1);
+    
+    if(op2 != NULL)
+    {
+        strcat(output, ", ");
+        strcat(output, op2);
+    }
+    printf("%*s", -20, output);
+} //parse_instruction ()
+
+
 char* fetch_instruction(Registers* registers, Reader* reader)
 {
     registers->regs[eip] += 4;

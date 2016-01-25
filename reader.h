@@ -12,6 +12,8 @@
 
 #include <stdio.h>
 #include "instruction.h"
+#include "registers.h"
+
 
 typedef struct Reader
 {
