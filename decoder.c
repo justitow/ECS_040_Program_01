@@ -54,7 +54,7 @@ void subl(int *op1, int *op2)
     *op2 = *op2 - *op1;
 } //subl ()
 
-void parse_operand(Registers *registers, Decoder* decoder, int memory[])
+void parse_operand(Registers* registers, Decoder* decoder, int memory[])
 {
 
     if(!(strcmp(decoder->opcode, "addl"))) //opcode is addl

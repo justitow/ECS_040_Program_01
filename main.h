@@ -1,7 +1,3 @@
-#include "registers.h"
-#include "reader.h"
-#include "decoder.h"
-
 enum {eax, ebp, esp, eip};
 int* address(Registers *registers, char *ptr, int memory[]);
 

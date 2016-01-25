@@ -12,8 +12,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "registers.h"
-
 typedef struct Decoder
 {
     char opcode[20];
@@ -28,7 +26,6 @@ void movl(int *op1, int *op2);
 void pushl(int *op1, int memory[], Registers *registers);
 void ret(Registers *registers, int memory[]);
 void subl(int *op1, int *op2);
-
-void parse_operand(Registers *registers, Decoder* decoder, int memory[]);
+void parse_operand(Registers* registers, Decoder* decoder, int memory[]);
 void parse(Registers* registers, Decoder* decoder, char* line, int memory[]);
-#endif // decoder_h
+#endif

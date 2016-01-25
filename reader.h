@@ -12,8 +12,6 @@
 
 #include <stdio.h>
 #include "instruction.h"
-#include "registers.h"
-#include "reader.h"
 
 typedef struct Reader
 {
@@ -24,4 +22,4 @@ void read_lines(Reader* reader, char* argv);
 void tab_to_ws(char* buffer);
 void newline_to_null(char* buffer);
 
-#endif // reader_h 
+#endif 
