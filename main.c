@@ -125,7 +125,7 @@ int main(int argc, char* argv[])
         line = fetch_instruction(&registers, &reader);
         parse(&registers, &decoder, line, memory);
         parse_operand(&registers, &decoder, memory);
-        printf(" eip: %*i eax: %*i", 3, registers.regs[eip], 2, registers.regs[eax]);
+        printf(" eip: %*i eax: %*i", 3, registers.regs[eip], 3, registers.regs[eax]);
         printf(" ebp: %*i esp: %i\n", 3, registers.regs[ebp], registers.regs[esp]);
     } // while ()
     
