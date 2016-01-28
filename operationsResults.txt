@@ -1,0 +1,5 @@
+File#: 1
+Instruction string spacing: OK
+Instruction string values (without spaces): OK
+Register string spacing: OK
+Register values (without spaces): OK

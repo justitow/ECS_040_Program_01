@@ -1,0 +1,26 @@
+Processing :  /home/jmweich/ECS_040_Program_01/main.c
+/home/jmweich/ECS_040_Program_01/main.c(59, 1):  Do not write function over 35 lines(parse).  [RULE_6_1_G_write_less_than_35_lines_for_function] 
+Processing :  /home/jmweich/ECS_040_Program_01/decoder.c
+Processing :  /home/jmweich/ECS_040_Program_01/decoder.h
+Processing :  /home/jmweich/ECS_040_Program_01/instruction.c
+Processing :  /home/jmweich/ECS_040_Program_01/instruction.h
+Processing :  /home/jmweich/ECS_040_Program_01/main.h
+Processing :  /home/jmweich/ECS_040_Program_01/reader.c
+Processing :  /home/jmweich/ECS_040_Program_01/reader.h
+Processing :  /home/jmweich/ECS_040_Program_01/registers.c
+Processing :  /home/jmweich/ECS_040_Program_01/registers.h
+
+
+=================================== Summary Report ===================================
+ ** Total Available Rules     : 52
+ ** Total Applied Rules       : 31
+ ** Total Violated Rules      : 1
+ ** Total Errors Occurs       : 1
+ ** Total Analyzed Files      : 10
+ ** Total Violated Files Count: 1
+ ** Build Quality             : 90.00%
+
+================================ Violated Rule Details ===============================
+ -  RULE_6_1_G_write_less_than_35_lines_for_function rule violated : 1
+
+================================ Violated File Details ===============================

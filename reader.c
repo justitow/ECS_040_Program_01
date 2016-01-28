@@ -31,7 +31,7 @@ void read_lines(Reader *reader, char* argv)
         {
             tab_to_ws(buffer);
             newline_to_null(buffer);
-            reader->lines[ic].info = (char*)malloc((strlen(buffer) + 1)*sizeof(char));
+            reader->lines[ic].info = (char*)malloc(255 * sizeof(char));
             strcpy(reader->lines[ic].info, buffer);
             reader->lines[ic].address = 100  + (4 * ic);
             ic++;

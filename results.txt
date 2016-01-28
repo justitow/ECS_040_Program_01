@@ -1,0 +1,10 @@
+Scores from p1 for Weich Justin Sodid Misaghian  
+Note that format is: e-mail<comma>last name<comma>first name
+For example: ssdavis@ucdavis.edu,Davis,Sean
+
+Addresses used: jmweich@ucdavis.edu smisaghianshirazi@ucdavis.edu  
+Style: 11 out of 12
+Design: 14 out of 14
+Operation: 24 out of 24
+Warnings (subtracted from final score down to zero): 0
+Total: 49 out of 50.

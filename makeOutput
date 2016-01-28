@@ -1,0 +1,6 @@
+g++ -c -g -Wall -ansi main.c
+g++ -c -g -Wall -ansi decoder.c
+cc    -c -o instruction.o instruction.c
+g++ -c -g -Wall -ansi reader.c
+g++ -c -g -Wall -ansi registers.c
+g++ -Wall -g -o CPU.out -ansi main.o decoder.o instruction.o reader.o registers.o

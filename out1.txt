@@ -1,0 +1,14 @@
+pushl %ebp           eip: 104 eax:   0 ebp: 996 esp: 996
+movl %esp, %ebp      eip: 108 eax:   0 ebp: 996 esp: 996
+subl $24, %esp       eip: 112 eax:   0 ebp: 996 esp: 972
+andl $-16, %esp      eip: 116 eax:   0 ebp: 996 esp: 960
+movl $0, %eax        eip: 120 eax:   0 ebp: 996 esp: 960
+subl %eax, %esp      eip: 124 eax:   0 ebp: 996 esp: 960
+movl $7, -4(%ebp)    eip: 128 eax:   0 ebp: 996 esp: 960
+movl $15, -8(%ebp)   eip: 132 eax:   0 ebp: 996 esp: 960
+movl -8(%ebp), %eax  eip: 136 eax:  15 ebp: 996 esp: 960
+addl -4(%ebp), %eax  eip: 140 eax:  22 ebp: 996 esp: 960
+movl %eax, -12(%ebp) eip: 144 eax:  22 ebp: 996 esp: 960
+movl -12(%ebp), %eax eip: 148 eax:  22 ebp: 996 esp: 960
+leave                eip: 152 eax:  22 ebp: 996 esp: 1000
+ret                  eip:   0 eax:  22 ebp: 996 esp: 1004

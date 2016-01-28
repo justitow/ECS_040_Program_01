@@ -58,9 +58,8 @@ void init_values(Registers* registers, int memory[])
 void parse(Registers* registers, Decoder* decoder, char* line, int memory[])
 {
     char *token, *output, *op1, *op2;
-    op1 = NULL;
     op2 = NULL;
-    token =(char*)malloc(sizeof(char*)*21);
+    token = (char*)malloc(sizeof(char*)*21);
     output = (char*)malloc(sizeof(char*)*21);
     op1 = (char*)malloc(sizeof(char*)*10);
     decoder->operand1 = NULL;
@@ -98,7 +97,8 @@ void parse(Registers* registers, Decoder* decoder, char* line, int memory[])
     {
         strcat(output, ", ");
         strcat(output, op2);
-    }
+    } //if ()
+
     printf("%*s", -20, output);
 } //parse_instruction ()
 
@@ -125,8 +125,10 @@ int main(int argc, char* argv[])
         line = fetch_instruction(&registers, &reader);
         parse(&registers, &decoder, line, memory);
         parse_operand(&registers, &decoder, memory);
-        printf(" eip: %*i eax: %*i", 3, registers.regs[eip], 3, registers.regs[eax]);
-        printf(" ebp: %*i esp: %i\n", 3, registers.regs[ebp], registers.regs[esp]);
+        printf(" eip: %*i", 3,  registers.regs[eip]); 
+        printf(" eax: %*i", 3, registers.regs[eax]);
+        printf(" ebp: %*i", 3, registers.regs[ebp]); 
+        printf(" esp: %i\n", registers.regs[esp]);
     } // while ()
     
     return 0;

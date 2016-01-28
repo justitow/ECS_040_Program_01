@@ -1,0 +1,14 @@
+1: 104 eax    0 ebp  996 esp  996
+2: 108 eax    0 ebp  996 esp  996
+3: 112 eax    0 ebp  996 esp  972
+4: 116 eax    0 ebp  996 esp  960
+5: 120 eax    0 ebp  996 esp  960
+6: 124 eax    0 ebp  996 esp  960
+7: 128 eax    0 ebp  996 esp  960
+8: 132 eax    0 ebp  996 esp  960
+9: 136 eax   15 ebp  996 esp  960
+10: 140 eax   22 ebp  996 esp  960
+11: 144 eax   22 ebp  996 esp  960
+12: 148 eax   22 ebp  996 esp  960
+13: 152 eax   22 ebp  996 esp  1000
+14:   0 eax   22 ebp  996 esp  1004
